@@ -21,5 +21,5 @@ public class ArcmovieApplication {
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-	
+
 }

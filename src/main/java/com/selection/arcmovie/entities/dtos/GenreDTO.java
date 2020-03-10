@@ -1,14 +1,19 @@
-package com.selection.arcmovie.entities;
+package com.selection.arcmovie.entities.dtos;
 
-public class Genre {
+public class GenreDTO {
 
     public Long id;
     public String name;
 
-    public Genre() {
+    public GenreDTO() {
     }
 
-    public Genre(String name) {
+    public GenreDTO(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public GenreDTO(String name) {
         this.name = name;
     }
 

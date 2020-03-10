@@ -1,19 +1,36 @@
 package com.selection.arcmovie.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
 import java.time.LocalDate;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-@ToString
 public class TmdbPeriod {
 
     public LocalDate maximum;
     public LocalDate minimum;
 
+    public TmdbPeriod() {
+    }
+
+    public LocalDate getMaximum() {
+        return maximum;
+    }
+
+    public void setMaximum(LocalDate maximum) {
+        this.maximum = maximum;
+    }
+
+    public LocalDate getMinimum() {
+        return minimum;
+    }
+
+    public void setMinimum(LocalDate minimum) {
+        this.minimum = minimum;
+    }
+
+    @Override
+    public String toString() {
+        return "TmdbPeriod{" +
+                "maximum=" + maximum +
+                ", minimum=" + minimum +
+                '}';
+    }
 }
