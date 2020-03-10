@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
@@ -15,18 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @ToString
-public class Movie implements Serializable {
+public class Movie {
 
     private Double popularity;
     @JsonProperty("vote_count")
     private Long voteCount;
     private Boolean video;
     @JsonProperty("poster_path")
-    private URI posterPath;
+    private String posterPath;
     private Long id;
     private Boolean adult;
     @JsonProperty("backdrop_path")
-    private URI backdropPath;
+    private String backdropPath;
     @JsonProperty("original_language")
     private String originalLanguage;
     @JsonProperty("original_title")
@@ -35,7 +34,7 @@ public class Movie implements Serializable {
     private List<Genre> genresId;
     private String title;
     @JsonProperty("vote_average")
-    private Long voteAverage;
+    private Double voteAverage;
     @JsonProperty("release_date")
     private String overview;
     private LocalDate releaseDate;
