@@ -12,6 +12,8 @@ import java.time.LocalDate;
 @Data
 @ToString
 public class TmdbPeriod {
+
     public LocalDate maximum;
     public LocalDate minimum;
+
 }

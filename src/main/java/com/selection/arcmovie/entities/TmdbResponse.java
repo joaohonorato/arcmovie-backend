@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 @ToString
 public class TmdbResponse {
+
     public List<Movie> result;
     public Long page;
     @JsonProperty("total_results")
@@ -20,4 +21,5 @@ public class TmdbResponse {
     public TmdbPeriod dates;
     @JsonProperty("total_pages")
     public Long totalPages;
+
 }

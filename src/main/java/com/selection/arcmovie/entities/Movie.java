@@ -11,7 +11,6 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -22,8 +21,8 @@ public class Movie implements Serializable {
     @JsonProperty("vote_count")
     private Long voteCount;
     private Boolean video;
-    @JsonProperty("original_language")
-    private URI poster_path;
+    @JsonProperty("poster_path")
+    private URI posterPath;
     private Long id;
     private Boolean adult;
     @JsonProperty("backdrop_path")
@@ -40,4 +39,9 @@ public class Movie implements Serializable {
     @JsonProperty("release_date")
     private String overview;
     private LocalDate releaseDate;
+
+    public Movie(String title) {
+        this.title = title;
+    }
+
 }
