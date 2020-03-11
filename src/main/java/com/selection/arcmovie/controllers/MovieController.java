@@ -23,9 +23,6 @@ public class MovieController {
     private static final Logger log = LoggerFactory.getLogger(MovieController.class);
 
     @Autowired
-    private TmdbResponseRepository tmdbResponseRepository;
-
-    @Autowired
     private UpcomingMovieService upcomingMovieService;
 
     @Autowired
