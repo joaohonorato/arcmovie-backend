@@ -2,15 +2,18 @@ package com.selection.arcmovie.entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TmdbResponse {
 
+    public Long page;
     @JsonProperty("results")
     public List<UpcomingMovie> upcomingMovies;
-    public Long page;
     @JsonProperty("total_results")
     public Long totalResults;
     public TmdbPeriod dates;
@@ -19,6 +22,15 @@ public class TmdbResponse {
     public List<Genre> genres;
 
     public TmdbResponse() {
+    }
+
+    public TmdbResponse(Long page, List<UpcomingMovie> upcomingMovies, Long totalResults, TmdbPeriod dates, Long totalPages, List<Genre> genres) {
+        this.page = page;
+        this.upcomingMovies = upcomingMovies;
+        this.totalResults = totalResults;
+        this.dates = dates;
+        this.totalPages = totalPages;
+        this.genres = genres;
     }
 
     public List<UpcomingMovie> getUpcomingMovies() {

@@ -1,28 +1,34 @@
 package com.selection.arcmovie.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 import java.time.LocalDate;
 import java.util.List;
-
+@RedisHash("upcomingMovie")
 public class UpcomingMovie {
 
+    @Id
+    private Long id;
     private Double popularity;
     @JsonProperty("vote_count")
     private Long voteCount;
     private Boolean video;
     @JsonProperty("poster_path")
     private String posterPath;
-    private Long id;
     private Boolean adult;
     @JsonProperty("backdrop_path")
     private String backdropPath;
     @JsonProperty("original_language")
     private String originalLanguage;
     @JsonProperty("original_title")
+    @Indexed
     private String originalTitle;
     @JsonProperty("genre_ids")
     private List<Long> genresId;
+    @Indexed
     private String title;
     @JsonProperty("vote_average")
     private Double voteAverage;

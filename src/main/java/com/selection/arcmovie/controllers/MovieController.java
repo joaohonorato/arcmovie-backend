@@ -1,7 +1,8 @@
 package com.selection.arcmovie.controllers;
 
+import com.selection.arcmovie.entities.TmdbResponse;
 import com.selection.arcmovie.entities.dtos.UpcomingMovieDTO;
-import com.selection.arcmovie.exceptions.GlobalExceptionHandler;
+import com.selection.arcmovie.repository.TmdbResponseRepository;
 import com.selection.arcmovie.services.GenreServiceImpl;
 import com.selection.arcmovie.services.UpcomingMovieService;
 import org.slf4j.Logger;
@@ -13,12 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/v1/movies/")
 public class MovieController {
 
     private static final Logger log = LoggerFactory.getLogger(MovieController.class);
+
+    @Autowired
+    private TmdbResponseRepository tmdbResponseRepository;
 
     @Autowired
     private UpcomingMovieService upcomingMovieService;
@@ -38,7 +43,6 @@ public class MovieController {
 
     @GetMapping("/find/{name}")
     public ResponseEntity<Map<Long,String>> findByName() {
-
         return ResponseEntity.ok().body(null);
     }
 
