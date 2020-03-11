@@ -1,9 +1,5 @@
 package com.selection.arcmovie.entities.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -77,4 +73,5 @@ public class UpcomingMovieDTO implements Serializable {
                 ", releaseDate='" + releaseDate + '\'' +
                 '}';
     }
+
 }

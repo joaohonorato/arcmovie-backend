@@ -1,36 +1,45 @@
 package com.selection.arcmovie.controllers;
 
-import com.selection.arcmovie.entities.Genre;
-import com.selection.arcmovie.entities.UpcomingMovie;
-import com.selection.arcmovie.entities.TmdbResponse;
 import com.selection.arcmovie.entities.dtos.UpcomingMovieDTO;
-import com.selection.arcmovie.entities.factory.UpcomingMovieFactory;
-import com.selection.arcmovie.services.GenreService;
+import com.selection.arcmovie.exceptions.GlobalExceptionHandler;
+import com.selection.arcmovie.services.GenreServiceImpl;
 import com.selection.arcmovie.services.UpcomingMovieService;
-import com.selection.arcmovie.services.UpcomingMovieServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/movies")
+@CrossOrigin(origins = "*")
+@RequestMapping("/v1/movies/")
 public class MovieController {
+
+    private static final Logger log = LoggerFactory.getLogger(MovieController.class);
 
     @Autowired
     private UpcomingMovieService upcomingMovieService;
+
+    @Autowired
+    private GenreServiceImpl genreService;
 
     @GetMapping("/")
     public ResponseEntity<List<UpcomingMovieDTO>> all(){
         return ResponseEntity.ok().body(upcomingMovieService.all());
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<UpcomingMovie>> findByName() {
-        return ResponseEntity.ok().body(Arrays.asList(new UpcomingMovie("The movies")));
+    @GetMapping("/page/{page}")
+    public ResponseEntity<List<UpcomingMovieDTO>> getPage(@PathVariable(value = "page") Long page){
+        return ResponseEntity.ok().body(upcomingMovieService.getPage(page));
     }
+
+    @GetMapping("/find/{name}")
+    public ResponseEntity<Map<Long,String>> findByName() {
+
+        return ResponseEntity.ok().body(null);
+    }
+
 }

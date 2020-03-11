@@ -17,12 +17,27 @@ public class UpcomingMovieRestServiceImpl implements UpcomingMovieRestService {
 
 
     @Override
-    public TmdbResponse all() {
+    public TmdbResponse getFirstPage() {
         StringBuilder sb = new StringBuilder("https://api.themoviedb.org/3/movie/upcoming?api_key=");
         sb.append(apiKey).append("&language=en-US&page=1");
         TmdbResponse result = restTemplate.getForObject(sb.toString() , TmdbResponse.class);
 
         return result;
-    };
+    }
+
+    @Override
+    public TmdbResponse getPage(Long page) {
+        StringBuilder sb = new StringBuilder("https://api.themoviedb.org/3/movie/upcoming?api_key=");
+        sb.append(apiKey).append("&language=en-US");
+        if(page != null) {
+            sb.append("&page=").append(page);
+        } else {
+            sb.append("&page=1");
+        }
+        TmdbResponse result = restTemplate.getForObject(sb.toString() , TmdbResponse.class);
+        return result;
+    }
+
+    ;
 
 }

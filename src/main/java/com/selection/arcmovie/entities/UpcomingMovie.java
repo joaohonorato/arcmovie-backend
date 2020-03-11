@@ -168,4 +168,5 @@ public class UpcomingMovie {
                 ", releaseDate=" + releaseDate +
                 '}';
     }
+
 }
